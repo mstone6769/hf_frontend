@@ -1,0 +1,42 @@
+---
+name: home
+url: /
+controller: HomeController
+---
+
+<div class="grid-frame vertical" >
+      <div class="grid-content shrink" style="padding: 0;">
+        <div class="primary title-bar left">
+          <div class="left title"><img src="/assets/img/logo.png" alt="HealthFundIt"></div>
+        </div>
+      </div>
+          <!--<div class="grid-block medium-horizontal shrink vertical"><img src="/assets/img/placehold.png" alt="HealthFundIt"/></div>-->
+        
+     
+      <div id="info" class="vertical medium-horizontal grid-block">
+        <div class="grid-block medium-order-2">
+          
+            <div class="small-12 large-9 grid-content feeds">
+              <div class="grid-block small-up-1 medium-up-1 large-up-1">
+                <div ng-repeat="project in projects track by $index" class="grid-content vertical wrap">
+                  <div class="custom-card">
+                    <div class="grid-block float-left small-2 project-image">
+                      <img src="{{project.featured_image_url}}">
+                    </div>
+                  <div class="custom-card-section">
+                  	
+                  	
+                    <h3>{{project.title}}</h3>
+                    <h4>Stephen E Fry, M.D.</h4>
+                    <p>Southwest Center for Chronic Disease</p>
+                  </div>
+                </div>
+                </div>
+                
+                </div>
+              </div>
+            </div>
+
+        </div>
+        </div>
+      </div>
