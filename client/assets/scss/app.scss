@@ -16,7 +16,6 @@
 #header {
   background: white;
   box-shadow: 0 0 5px rgba(black, .2);
-  margin-bottom: 1rem;
 }
 
 .card-project_title {
@@ -35,6 +34,7 @@
 
 .project-list {
   @extend .no-bullet;
+  padding-top: 2rem;
   > li {
     margin-bottom: 2rem;
   }
@@ -44,4 +44,13 @@
   border-radius: 1000px;
   min-height: 60px;
   min-width: 60px;
+}
+
+.call-to-action {
+  background: white;
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+  p {
+    @extend h4;
+  }
 }
