@@ -1,47 +1,56 @@
 @import "settings";
 @import "foundation";
 
-@include breakpoint(small-only) {
-	.menu-bar {
-		width:100%;
-		background-color:#fff;
-	}
+// For Screen Only Text
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;  
 }
 
-// This is a card container
-.custom-card {
-  @include card-container(
-    $background: #fff, // Background color
-    $color: #303134, // Text color
-    $border: 0px solid #000, // Border
-    $radius: 0px, // Border radius
-    $shadow: 0px 0px 1px 1px #cdd0d1, // Box shadow
-    $padding: 1rem,
-    $margin: 1rem // Margin bottom
-  );
+#header {
+  background: white;
+  box-shadow: 0 0 5px rgba(black, .2);
 }
 
-.project-image { height:200px; overflow:hidden; }
-
-// This is a card divider
-.custom-card-divider {
-  @include card-divider(
-    $background: #ccc,
-    $padding: 1rem
-  );
+.card-project_title {
+  @extend h5;
 }
 
-// This is a card section
-.custom-card-section {
-  @include card-section(
-    $padding: 1rem
-  );
-  float: left;
+.card-project_author {
+  @extend h6;
 }
 
-.custom-card-section p { color: #7b8b97; }
+.card-project_image {
+  @include breakpoint(medium) {
+    max-width: 320px;
+  }
+}
 
-.feeds { background-color:#f5f9fa; border-top: 1px solid #bfc2c3; }
-.primary.title-bar { background-color:#fff; }
+.project-list {
+  @extend .no-bullet;
+  padding-top: 2rem;
+  > li {
+    margin-bottom: 2rem;
+  }
+}
 
-.grid-frame { overflow: visible; }
+.circle-button {
+  border-radius: 1000px;
+  min-height: 60px;
+  min-width: 60px;
+}
+
+.call-to-action {
+  background: white;
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+  p {
+    @extend h4;
+  }
+}
