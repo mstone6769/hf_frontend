@@ -69,7 +69,7 @@
 // - - - - - - - - - - - - - - -
 
 // This sets 1rem to be 16px
-   $rem-base: 14px;
+//   $rem-base: 16px;
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
@@ -90,8 +90,8 @@
    $font-weight-bold: 300;
 
 // We use these to control various global styles
-   $body-background: #403f4d;
-   $body-font-color: #fff;
+$body-background: #eee;
+   // $body-font-color: #fff;
    $body-font-family: "proxima nova", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
@@ -104,7 +104,7 @@
 // $info-color: #A0D3E8;
 // $success-color: #43AC6A;
 // $warning-color: #F08A24;
-   $dark-color: #2e2d33;
+   // $dark-color: #2e2d33;
 // $gray: #dfdfdf;
 // $gray-dark: darken($gray, 8);
 // $gray-light: lighten($gray, 8);
@@ -114,7 +114,7 @@
 // $global-rounded: 1000px;
 
 // We use this for default spacing
-   $global-padding: .7rem;
+   // $global-padding: .7rem;
 // $global-spacing: rem-calc(15); 
 
 // 3. Breakpoints
@@ -137,17 +137,17 @@
 
 // We use these to control header font styles
 // $header-font-family: $body-font-family;
-   $header-font-weight: 300;
+   // $header-font-weight: 300;
 // $header-font-style: $font-weight-normal;
-   $header-font-color: #FFF;
+   // $header-font-color: #FFF;
 // $header-line-height: 1.4;
 // $header-top-margin: .2rem;
 // $header-bottom-margin: .5rem;
 // $header-text-rendering: optimizeLegibility;
 
 // We use these to control header font sizes
-   $h1-font-size: rem-calc(35);
-   $h2-font-size: rem-calc(26);
+   // $h1-font-size: rem-calc(35);
+   // $h2-font-size: rem-calc(26);
 // $h3-font-size: rem-calc(27);
 // $h4-font-size: rem-calc(23);
 // $h5-font-size: rem-calc(18);
@@ -321,10 +321,10 @@
 // 11. Card
 // - - - - - - - - - - - - - - -
 
-   $card-background: #4e4d5d;
+   // $card-background: #4e4d5d;
 // $card-color: isitlight($card-background);
 // $card-border: 1px solid smartscale($card-background, 7%);
-   $card-radius: 6px;
+   // $card-radius: 6px;
 // $card-shadow: 0 1px 2px rgba(#000, 0.2);
 // $card-padding: $global-padding;
 // $card-margin: 0.5rem;
@@ -424,14 +424,14 @@
 // $menubar-fontsize: 1rem;
 // $menubar-background: #fff;
 // $menubar-background-hover: smartscale($menubar-background, 7%);
-   $menubar-background-active: $primary-color;
+   // $menubar-background-active: $primary-color;
 // $menubar-color: isitlight($menubar-background);
 // $menubar-color-hover: $menubar-color;
-   $menubar-color-active: #fff;
+   // $menubar-color-active: #fff;
 
-   $menubar-item-padding: 1.1rem;
-   $menubar-icon-size: 15px;
-   $menubar-icon-spacing: .8rem; 
+   // $menubar-item-padding: 1.1rem;
+   // $menubar-icon-size: 15px;
+   // $menubar-icon-spacing: .8rem; 
 
 // 17. Modal
 // - - - - - - - - - - - - - - -
@@ -471,7 +471,7 @@
 // $motion-spin-and-fade: true;
 
 // Default speed for transitions and animations
-   $motion-duration-default: 300ms;
+   // $motion-duration-default: 300ms;
 // Slow and fast modifiders
 // $motion-duration-slow: 1.4s;
 // $motion-duration-fast: 300ms;
@@ -534,7 +534,7 @@
 // $panel-size-vertical: 300px;
 // $panel-padding: 0;
 
-   $panel-background: $dark-color;
+   // $panel-background: $dark-color;
 // $panel-shadow: 3px 0 10px rgba(black, 0.25);
 // $panel-animation-speed: 0.15s; 
 
@@ -581,9 +581,9 @@
 // $titlebar-center-width: 50%;
 // $titlebar-side-width: (100% - $titlebar-center-width) / 2;
 // $titlebar-background: #fff;
-   $titlebar-color: #fff;
-   $titlebar-border: 0 solid #ccc;
-   $titlebar-padding: 0;
+   // $titlebar-color: #fff;
+   // $titlebar-border: 0 solid #ccc;
+   // $titlebar-padding: 0;
 // $titlebar-item-classes: (
 //   center: 'center',
 //   left: 'left',
