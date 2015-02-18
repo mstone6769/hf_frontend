@@ -1,6 +1,18 @@
 @import "settings";
 @import "foundation";
 
+// For Screen Only Text
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;  
+}
+
 #header {
   background: white;
   box-shadow: 0 0 5px rgba(black, .2);
@@ -22,7 +34,14 @@
 }
 
 .project-list {
+  @extend .no-bullet;
   > li {
     margin-bottom: 2rem;
   }
+}
+
+.circle-button {
+  border-radius: 1000px;
+  min-height: 60px;
+  min-width: 60px;
 }

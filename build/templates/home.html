@@ -6,18 +6,21 @@
     </div>
   </header>
   <div class="grid-container">
-    <ul class="grid-block vertical project-list">
-      <li ng-repeat="project in home.projects track by $index" class="grid-content">
+    <ul class="project-list">
+      <li ng-repeat="project in home.projects track by $index">
         <!-- Adding link for future -->
         <article class="card-project grid-block vertical medium-horizontal">
-          <div class="card-project_image grid-content shrink">
+          <div class="card-project_image grid-content shrink medium-order-2">
             <img ng-src="{{project.featured_image_url}}" alt="">
           </div>
-          <div class="grid-content">
+          <div class="grid-content medium-order-3">
             <h1 class="card-project_title" ng-bind="project.title"></h1>
             <h2 class="card-project_author">Stephen E Fry, M.D.</h2>
             <em class="card-project_date">{{project.created_at | date:"MM/dd/yyyy 'at' h:mma"}}</em>
             <p class="card-project_excerpt" ng-bind="project.excerpt"></p>
+          </div>
+          <div class="grid-content shrink medium-order-1">
+            <button ng-click="project.voted = !project.voted" class="button circle-button" ng-class="{'secondary': !project.voted}"><span class="sr-only">Vote</span><span class="number-of-votes">245</span></button>
           </div>
         </article>
       </li>
