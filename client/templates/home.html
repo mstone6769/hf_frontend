@@ -5,20 +5,26 @@ url: /
 
 <div ng-controller="HomeController as home">
   <header id="header">
-    <img src="/assets/img/logo.png" alt="HealthFundIt">
+    <div class="grid-container">
+      <img src="/assets/img/logo.png" alt="HealthFundIt">
+    </div>
   </header>
-  <ul class="grid-block vertical medium-horizontal small-up-1 medium-up-3 large-up-4">
-    <li ng-repeat="project in home.projects track by $index" class="grid-content">
-      <!-- Adding link for future -->
-      <article class="card card-project">
-        <img ng-src="{{project.featured_image_url}}" alt="">
-        <div class="card-section">
-          <h1 class="card-project_title" ng-bind="project.title"></h1>
-          <h2 class="card-project_author">Stephen E Fry, M.D.</h2>
-          <em class="card-project_date">{{project.created_at | date:"MM/dd/yyyy 'at' h:mma"}}</em>
-          <p class="card-project_excerpt" ng-bind="project.excerpt"></p>
-        </div>
-      </article>
-    </li>
-  </ul>
+  <div class="grid-container">
+    <ul class="grid-block vertical project-list">
+      <li ng-repeat="project in home.projects track by $index" class="grid-content">
+        <!-- Adding link for future -->
+        <article class="card-project grid-block vertical medium-horizontal">
+          <div class="card-project_image grid-content shrink">
+            <img ng-src="{{project.featured_image_url}}" alt="">
+          </div>
+          <div class="grid-content">
+            <h1 class="card-project_title" ng-bind="project.title"></h1>
+            <h2 class="card-project_author">Stephen E Fry, M.D.</h2>
+            <em class="card-project_date">{{project.created_at | date:"MM/dd/yyyy 'at' h:mma"}}</em>
+            <p class="card-project_excerpt" ng-bind="project.excerpt"></p>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </div>
 </div>

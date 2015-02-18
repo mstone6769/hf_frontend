@@ -8,9 +8,21 @@
 }
 
 .card-project_title {
-  @extend h3;
+  @extend h5;
 }
 
 .card-project_author {
-  @extend h4;
+  @extend h6;
+}
+
+.card-project_image {
+  @include breakpoint(medium) {
+    max-width: 320px;
+  }
+}
+
+.project-list {
+  > li {
+    margin-bottom: 2rem;
+  }
 }
