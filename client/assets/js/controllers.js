@@ -15,11 +15,12 @@ angular.module('application')
 
   
 ]).
-factory('getCampaigns', function(stage) {
+factory('getCampaigns', ['$http', function(stage) {
 
     var config = { 
-      headers:  
-        "Accept" "application/json;odata=verbose"
+        { headers:  
+          "Accept" : "application/json;odata=verbose"
+        }
       };
 
     var campaigns = [];
@@ -34,4 +35,4 @@ factory('getCampaigns', function(stage) {
 
       return campaigns;
 
- });
+ }]);
