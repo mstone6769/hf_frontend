@@ -19,6 +19,7 @@ url: /
       </div>
     </div>
   </div>
+
   <div class="grid-container">
     <ul class="project-list">
       <li ng-repeat="project in home.projects track by $index">
@@ -50,4 +51,5 @@ url: /
       </li>
     </ul>
   </div>
+  <pre>{{home.projects | json}}</pre>
 </div>

@@ -1,20 +1,44 @@
-    <header id="header" role="banner">
-      <div class="grid-container">
-      	     
-        <div class="menu-group">
-			<div class="menu-group-left">
-				<img src="/assets/img/logo.png" alt="HealthFundIt">
-			</div>
-			<div class="menu-group-right">
-				<ul class="menu-bar">
-					<li><a href="#">Projects</a></li>
-					<li><a href="#">Patients</a></li>
-					<li><a href="#">Start</a></li>
-					<li><a href="#">How it Works</a></li>
-					<li><a href="#">Login</a></li>
-				</ul>
-			</div>
-		</div>  
-    </header>
-		
-	
+
+<div class="grid-container">	     
+	<div class="menu-group">
+		<div class="menu-group-left">
+			<img src="/assets/img/logo.png" alt="HealthFundIt">
+		</div>
+		<div class="menu-group-right">
+			<ul class="menu-bar">
+				<li><a href="#">Projects</a></li>
+				<li><a href="#">Patients</a></li>
+				<li><a href="#">Start</a></li>
+				<li><a href="#">How it Works</a></li>
+				<li><a href="" zf-toggle="login">Login</a></li>
+			</ul>
+		</div>
+	</div>
+	<zf-panel id="login" position="right" class="login-panel">
+		<a zf-close="" class="close-button">×<span class="sr-only">Close</span></a>
+		<section ng-controller="LoginController as login">
+			<h4>Login</h4>
+			<div ng-show="login.response.success === false">Email/Password is incorrect</div>
+			<form name="loginAccount" ng-submit="login.logMeIn(user)">
+				<label for="loginEmail">Email</label>
+				<input required="required" id="loginEmail" type="email" ng-model="user.email">
+				<label for="loginPassword">Password</label>
+				<input required="required" id="loginPassword" type="password" ng-model="user.password">
+				<button ng-hide="loginAccount.$invalid" type="submit" class="button secondary">Login</button>
+			</form>
+		</section>
+		<hr>
+		<section ng-controller="SignupController as signup">
+			<h4>Signup</h4>
+			<form name="createAccount" ng-submit="signup.createAccount(user)">
+				<label for="signup_name">Name</label>
+				<input required="required" id="signup_name" type="text" ng-model="user.name">
+				<label for="signup_email">Email</label>
+				<input required="required" id="signup_email" type="email" ng-model="user.email">
+				<label for="signup_password">Password</label>
+				<input required="required" id="signup_password" type="password" ng-model="user.password">
+				<button ng-hide="createAccount.$invalid" type="submit" class="button secondary">Signup</button>
+			</form>
+		</section>
+	</zf-panel>
+</div>	

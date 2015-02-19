@@ -51,9 +51,15 @@
 
 .call-to-action {
   background: white;
+  padding-top: 2rem;
   padding-bottom: 2rem;
   margin-bottom: 1rem;
   p {
     @extend h4;
   }
+}
+
+.login-panel {
+  background: $primary-color;
+  padding: 1rem;
 }

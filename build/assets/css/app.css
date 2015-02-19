@@ -6089,5 +6089,10 @@ blockquote p {
 
 .call-to-action {
   background: white;
+  padding-top: 2rem;
   padding-bottom: 2rem;
   margin-bottom: 1rem; }
+
+.login-panel {
+  background: #8ed9dc;
+  padding: 1rem; }
