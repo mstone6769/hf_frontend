@@ -28,6 +28,9 @@
 
 .card-project_image {
   @include breakpoint(medium) {
+    max-width: 240px;
+  }
+  @include breakpoint(large) {
     max-width: 320px;
   }
 }

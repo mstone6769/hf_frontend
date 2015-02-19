@@ -4,11 +4,6 @@ url: /
 ---
 
 <div ng-controller="HomeController as home">
-  <header id="header">
-    <div class="grid-container">
-      <img src="/assets/img/logo.png" alt="HealthFundIt">
-    </div>
-  </header>
   <div class="hero">
     <!-- Hero image here -->
   </div>
@@ -22,8 +17,6 @@ url: /
           <a href="" class="button large">Submit an Idea</a>
         </div>
       </div>
-      
-      
     </div>
   </div>
   <div class="grid-container">
@@ -35,13 +28,21 @@ url: /
             <img ng-src="{{project.featured_image_url}}" alt="">
           </div>
           <div class="grid-content medium-order-3">
-            <h1 class="card-project_title" ng-bind="project.title"></h1>
+            <h1 class="card-project_title"><a href="" ng-bind="project.title"></a></h1>
             <h2 class="card-project_author">Stephen E Fry, M.D.</h2>
             <em class="card-project_date">{{project.created_at | date:"MM/dd/yyyy 'at' h:mma"}}</em>
             <p class="card-project_excerpt" ng-bind="project.excerpt"></p>
+            <a href="">
+              <ng-pluralize count="project.comments_count"
+                   when="{'0': 'Add a Comment',
+                          '1': '1 Comment',
+                          'other': '{} Comments'}">
+              </ng-pluralize>
+              <span ng-if="!project.comments_count">Add a Comment</span>
+            </a>
           </div>
           <div class="grid-content shrink medium-order-1">
-            <button ng-click="project.voted = !project.voted" class="button circle-button" ng-class="{'secondary': !project.voted}"><span class="sr-only">Vote</span><span class="number-of-votes">245</span></button>
+            <button ng-click="project.voted = !project.voted" class="button circle-button" ng-class="{'secondary': !project.voted}"><span class="sr-only">Vote</span><span class="number-of-votes" ng-bind="project.votes_count"></span></button>
           </div>
         </article>
       </li>

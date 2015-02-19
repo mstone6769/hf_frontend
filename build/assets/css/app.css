@@ -6072,6 +6072,9 @@ blockquote p {
 
 @media only screen and (min-width: 40em) {
   .card-project_image {
+    max-width: 240px; } }
+@media only screen and (min-width: 75em) {
+  .card-project_image {
     max-width: 320px; } }
 
 .project-list {
