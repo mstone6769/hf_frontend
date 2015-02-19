@@ -15,8 +15,11 @@
     </style>
   </head>
   <body>
+
+    <div ng-include src="'/partials/header.html'"></div>
     
-    <div ui-view=""></div>
+    <main id="main" role="main" ui-view=""></main>
+    <footer role="contentinfo"></footer>
     
   </body>
 </html>
