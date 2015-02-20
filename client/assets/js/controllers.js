@@ -18,7 +18,7 @@ angular.module('application')
     };
 
     var responsePromise = $http
-      .get("http://hfi2.herokuapp.com/crowdreview#crowdreview_list", config)
+      .get("http://hfi2.herokuapp.com/crowdreview", config)
       .success(function (data, status, headers, config) {
         homeCtlr.projects  = data;
       })
