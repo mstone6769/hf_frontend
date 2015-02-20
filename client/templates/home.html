@@ -28,7 +28,7 @@ url: /
             <img ng-src="{{project.featured_image_url}}" alt="">
           </div>
           <div class="grid-content medium-order-3">
-            <h1 class="card-project_title"><a href="/campaigns/{{project.id}}" ng-bind="project.title"></a></h1>
+            <h1 class="card-project_title"><a ng-sref="campaign" ng-bind="project.title"></a></h1>
             
             <h2 class="card-project_author" ng-repeat="researcher in project.researchers">{{researcher.name}}</h2>
             
