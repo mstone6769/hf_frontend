@@ -38,11 +38,11 @@ angular.module('application')
   /// Look mom! I don't have to use $scope  !!!
   var campaignCtlr = this;
 
-  campaignCtlr.details  = 'Not retrieved yet.';
+  campaignCtlr.campaigns  = 'Not retrieved yet.';
 
 
   /// This needs to be moved to a service
-  campaignCtlr.getProjects = function () {
+  campaignCtlr.getCampaigns = function () {
 
     var config = { 
       headers:  {
@@ -51,16 +51,16 @@ angular.module('application')
     };
 
     var responsePromise = $http
-      .get("http://hfi2.herokuapp.com/campaigns/:id", config)
+      .get("http://hfi2.herokuapp.com/campaigns/" + $stateParams.id, config)
       .success(function (data, status, headers, config) {
-        campaignCtlr.projects  = data;
+        campaignCtlr.campaigns  = data;
       })
       .error(function (data, status, headers, config) {
-        campaignCtlr.projects = 'Failed to get Projects: ' + data;
+        campaignCtlr.campaigns = 'Failed to get Project: ' + data;
       });
   };
 
-  campaignCtlr.getProjects();
+  campaignCtlr.getCampaigns();
 
 }
 

@@ -1,5 +1,8 @@
-<div ng-controller="CampaignController as campaign">
+<div ng-controller="CampaignController as campaigns">
   <div class="grid-container">
-    <h2>{{campaign.title}}</h2>
+  	<li ng-repeat="campaign in campaigns">
+    	<h2>{{campaign.title}}</h2>
+	</li>
+    yesyes
   </div>
 </div>
