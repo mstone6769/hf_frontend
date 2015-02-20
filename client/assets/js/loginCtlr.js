@@ -8,13 +8,13 @@
 			return $http({
 					method: 'POST',
 					url: apiURL + '/sign_in',
-					headers: {
+					headers:  {
 						'Accept': 'application/json;odata=verbose'
 					},
-					params: {email: user.email, password: user.password}
+					params: {'user[email]': user.email, 'user[password]': user.password}
 				}).then(
 					function(response) {
-						console.log(response.data);
+						console.log(response);
 						return response.data;
 					},
 					function(error) {
@@ -25,13 +25,13 @@
 			return $http({
 					method: 'POST',
 					url: apiURL,
-					headers: {
+					headers:  {
 						'Accept': 'application/json;odata=verbose'
 					},
-					data: { email: user.email, password: user.password }
+					params: { 'user[email]': user.email, 'user[password]': user.password, 'user[name]': user.name }
 				}).then(
 					function(response) {
-						console.log(response.data);
+						console.log(response);
 						return response.data;
 					},
 					function(error) {
@@ -40,7 +40,8 @@
 		};
 
 		return {
-			userLogin: userLogin
+			userLogin: userLogin,
+			createUser: createUser
 		};
 	}]);
 	app.controller('LoginController', ['accountService', function(accountService){
@@ -56,7 +57,9 @@
 	app.controller('SignupController', ['accountService', function(accountService){
 		var signup = this;
 		signup.createAccount = function(user) {
-			console.log(user.name, user.email, user.password);
+			accountService.createUser(user).then(function(accountResponse) {
+				signup.response = accountResponse;
+			});
 		};
 	}]);
 })();
