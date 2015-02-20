@@ -1,13 +1,14 @@
 (function() {
 	'use strict';
 	var app = angular.module('application');
-	app.factory('accountService', ['$http', function accountFactory($http){
-		var apiURL = 'http://hfi2.herokuapp.com/users';
+	app.value('apiURL', 'http://hfi2.herokuapp.com');
+	app.factory('accountService', ['apiURL','$http', '$localStorage', function accountFactory(apiURL, $http, $localStorage){
+		var userAPI = apiURL + '/users';
 
 		var userLogin = function (user) {
 			return $http({
 					method: 'POST',
-					url: apiURL + '/sign_in',
+					url: userAPI + '/sign_in',
 					headers:  {
 						'Accept': 'application/json;odata=verbose'
 					},
@@ -15,6 +16,9 @@
 				}).then(
 					function(response) {
 						console.log(response);
+						if (response.data.success) {
+							$localStorage.user = response.data.user;
+						}
 						return response.data;
 					},
 					function(error) {
@@ -24,7 +28,7 @@
 		var createUser = function (user) {
 			return $http({
 					method: 'POST',
-					url: apiURL,
+					url: userAPI,
 					headers:  {
 						'Accept': 'application/json;odata=verbose'
 					},
@@ -38,19 +42,39 @@
 						console.log(error);
 					});
 		};
+		var getCurrentUser = function () {
+			return $localStorage.user;
+		};
+
+		var logoutUser = function () {
+			return $localStorage.$reset();
+			window.location = '/';
+		};
 
 		return {
 			userLogin: userLogin,
-			createUser: createUser
+			createUser: createUser,
+			getCurrentUser: getCurrentUser,
+			logoutUser: logoutUser
 		};
 	}]);
 	app.controller('LoginController', ['accountService', function(accountService){
 		var login = this;
-		login.logMeIn = function(user) {
+		login.logMeIn = function(user, headerUser) {
 			console.log(user.email, user.password);
 			accountService.userLogin(user).then(function(accountResponse) {
 				login.response = accountResponse;
+				headerUser = accountResponse.user;
 			});
+		};
+
+	}]);
+	app.controller('HeaderController', ['accountService', '$scope', function(accountService, $scope){
+		var header = this;
+		header.user = accountService.getCurrentUser();
+
+		header.logout = function () {
+			accountService.logoutUser();
 		};
 
 	}]);

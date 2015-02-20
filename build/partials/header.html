@@ -1,15 +1,16 @@
-<div class="grid-container">	     
+<div class="grid-container" ng-controller="HeaderController as header">	     
 	<div class="menu-group">
 		<div class="menu-group-left">
 			<img src="/assets/img/logo.png" alt="HealthFundIt">
 		</div>
 		<div class="menu-group-right">
 			<ul class="menu-bar">
-				<li><a ng-sref="projects">Projects</a></li>
+				<li><a href="" ng-sref="projects">Projects</a></li>
 				<li><a href="#">Patients</a></li>
 				<li><a href="#">Start</a></li>
 				<li><a href="#">How it Works</a></li>
-				<li><a href="" zf-toggle="login">Login</a></li>
+				<li ng-hide="header.user"><a href="" zf-toggle="login">Login</a></li>
+				<li ng-show="header.user"><a href="" ng-click="header.logout()">Logout</a></li>
 			</ul>
 		</div>
 	</div>
@@ -19,7 +20,7 @@
 			<h4>Login</h4>
 			<p ng-show="login.response.success === false">Email/Password is incorrect</p>
 			<p ng-show="login.response.success === true">You are logged in</p>
-			<form ng-hide="login.response.success === true" name="loginAccount" ng-submit="login.logMeIn(user)">
+			<form ng-hide="login.response.success === true" name="loginAccount" ng-submit="login.logMeIn(user, header.user)">
 				<label for="loginEmail">Email</label>
 				<input required="required" id="loginEmail" type="email" ng-model="user.email">
 				<label for="loginPassword">Password</label>
