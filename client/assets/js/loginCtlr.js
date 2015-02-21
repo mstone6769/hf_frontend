@@ -1,8 +1,7 @@
 (function() {
 	'use strict';
 	var app = angular.module('application');
-	app.value('apiURL', 'http://hfi2.herokuapp.com');
-	app.factory('accountService', ['apiURL','$http', '$localStorage', function accountFactory(apiURL, $http, $localStorage){
+	app.factory('accountService', ['apiURL','$http', '$localStorage', '$state', '$rootScope', function accountFactory(apiURL, $http, $localStorage, $state, $rootScope){
 		var userAPI = apiURL + '/users';
 
 		var userLogin = function (user) {
@@ -15,9 +14,10 @@
 					params: {'user[email]': user.email, 'user[password]': user.password}
 				}).then(
 					function(response) {
-						console.log(response);
 						if (response.data.success) {
 							$localStorage.user = response.data.user;
+							$rootScope.$broadcast('user-loggedin');
+							$state.go('account');
 						}
 						return response.data;
 					},
@@ -35,7 +35,6 @@
 					params: { 'user[email]': user.email, 'user[password]': user.password, 'user[name]': user.name }
 				}).then(
 					function(response) {
-						console.log(response);
 						return response.data;
 					},
 					function(error) {
@@ -47,8 +46,9 @@
 		};
 
 		var logoutUser = function () {
-			return $localStorage.$reset();
-			window.location = '/';
+			$localStorage.$reset();
+			$rootScope.$broadcast('user-loggedout');
+			$state.go('homepage');
 		};
 
 		return {
@@ -60,22 +60,30 @@
 	}]);
 	app.controller('LoginController', ['accountService', function(accountService){
 		var login = this;
-		login.logMeIn = function(user, headerUser) {
-			console.log(user.email, user.password);
+		login.logMeIn = function(user) {
 			accountService.userLogin(user).then(function(accountResponse) {
-				login.response = accountResponse;
-				headerUser = accountResponse.user;
+				login.response = accountResponse;				
 			});
 		};
 
 	}]);
-	app.controller('HeaderController', ['accountService', '$scope', function(accountService, $scope){
+	app.controller('HeaderController', ['accountService', '$scope', 'FoundationApi', function(accountService, $scope, FoundationApi){
 		var header = this;
 		header.user = accountService.getCurrentUser();
-
+		header.userLoggedIn = header.user;
 		header.logout = function () {
 			accountService.logoutUser();
 		};
+
+		$scope.$on('user-loggedin', function(event, args) {
+			header.userLoggedIn = true;
+			// Closes login sidebar
+			FoundationApi.publish('login', 'close');
+		});
+
+		$scope.$on('user-loggedout', function(event, args) {
+			header.userLoggedIn = false;
+		});
 
 	}]);
 	app.controller('SignupController', ['accountService', function(accountService){
@@ -85,5 +93,9 @@
 				signup.response = accountResponse;
 			});
 		};
+	}]);
+	app.controller('AccountController', ['accountService', 'FoundationApi', function(accountService, FoundationApi){
+		var account = this;
+		account.user = accountService.getCurrentUser();
 	}]);
 })();

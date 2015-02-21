@@ -1,8 +1,8 @@
 (function() {
 	'use strict';
 	var app = angular.module('application');
-	app.factory('campaignService', ['$http', function campaignFactory($http){
-		var apiURL = 'http://hfi2.herokuapp.com';
+	app.factory('campaignService', ['apiURL', '$http', function campaignFactory(apiURL, $http){
+		var apiURL = apiURL;
 
 		var getCampaigns = function () {
 			return $http({
@@ -30,7 +30,9 @@
 		
 		var campaignCtlr = this;
 
-		campaignService.getCampaigns().then(function (response) {campaignCtlr.campaigns=response;})
+		campaignService.getCampaigns().then(function(response) {
+			campaignCtlr.campaigns = response;
+		});
 
 	}]);
 
