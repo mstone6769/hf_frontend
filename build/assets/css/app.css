@@ -378,7 +378,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  background: #eee;
+  background: #f5f9fa;
   color: #222;
   padding: 0;
   margin: 0;
@@ -6065,6 +6065,18 @@ blockquote p {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0; }
+
+.logo {
+  width: 200px;
+  height: auto;
+  padding: 1.5rem 0; }
+
+.rotator {
+  margin: 0;
+  min-height: 480px;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover; }
 
 #header {
   background: white;

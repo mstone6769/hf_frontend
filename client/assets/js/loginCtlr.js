@@ -35,6 +35,11 @@
 					params: { 'user[email]': user.email, 'user[password]': user.password, 'user[name]': user.name }
 				}).then(
 					function(response) {
+						if (response.data) {
+							$localStorage.user = response.data;
+							$rootScope.$broadcast('user-loggedin');
+							$state.go('account');
+						}
 						return response.data;
 					},
 					function(error) {
@@ -77,12 +82,14 @@
 
 		$scope.$on('user-loggedin', function(event, args) {
 			header.userLoggedIn = true;
+			header.user = accountService.getCurrentUser();
 			// Closes login sidebar
 			FoundationApi.publish('login', 'close');
 		});
 
 		$scope.$on('user-loggedout', function(event, args) {
 			header.userLoggedIn = false;
+			FoundationApi.publish('userMenu', 'close');
 		});
 
 	}]);
@@ -91,6 +98,9 @@
 		signup.createAccount = function(user) {
 			accountService.createUser(user).then(function(accountResponse) {
 				signup.response = accountResponse;
+
+				// Reset the Signup form
+				user.name = user.email = user.password = '';
 			});
 		};
 	}]);
