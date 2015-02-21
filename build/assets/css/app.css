@@ -6105,6 +6105,9 @@ blockquote p {
   padding-bottom: 2rem;
   margin-bottom: 1rem; }
 
+.user-nav-item {
+  border-left: 1px solid #ccc; }
+
 .login-panel {
   background: #8ed9dc;
   padding: 1rem; }

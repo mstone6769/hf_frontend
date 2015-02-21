@@ -5,6 +5,7 @@ url: /account
 
 <div class="grid-container" ng-controller="AccountController as account">
 	<h1>Dashboard</h1>
+	<!-- See note below <img ng-src="{{account.user.avatar_url}}" alt="{{account.user.name}}"> -->
 	<h2>Welcome {{account.user.name}}</h2>
 	<hr>
 	<h2>Settings</h2>
@@ -15,6 +16,13 @@ url: /account
 		<input required="required" id="update_email" type="email" ng-model="account.user.email">
 		<label for="update_password">Password</label>
 		<input id="update_password" type="password" ng-model="account.user.password">
+		<!-- 
+			Does not work :(
+			Todo: make it work - but probably not that vital right now. 
+		<div>
+			<label for="update_image">Update Avatar</label>
+			<input id="update_image" type="file" ng-model="account.user.avatar">
+		</div> -->
 		<button ng-hide="updateAccount.$invalid" type="submit" class="button secondary">Update</button>
 	</form>
 </div>
