@@ -1,7 +1,7 @@
-<div class="grid-container" ng-controller="HeaderController as header">	     
+<div class="grid-container" ng-controller="HeaderController as header">	
 	<div class="menu-group">
 		<div class="menu-group-left">
-			<a ui-sref="homepage"><img src="/assets/img/logo.png" alt="HealthFundIt"></a>
+			<a ui-sref="homepage"><img src="/assets/img/logo.png" alt="HealthFundIt" class="logo"></a>
 		</div>
 		<div class="menu-group-right">
 			<ul class="menu-bar">
@@ -9,11 +9,29 @@
 				<li><a href="#">Patients</a></li>
 				<li><a href="#">Start</a></li>
 				<li><a href="#">How it Works</a></li>
-				<li ng-hide="header.userLoggedIn"><a href="" zf-toggle="login">Login</a></li>
-				<li ng-show="header.userLoggedIn"><a href="" ng-click="header.logout()">Logout</a></li>
+				<li class="user-nav-item" ng-hide="header.userLoggedIn"><a href="" zf-toggle="login">Login/Signup</a></li>
+				<li class="user-nav-item" ng-show="header.userLoggedIn">
+					<a href="" zf-toggle="userMenu">
+						<span ng-if="header.user.name">{{header.user.name}}</span>
+						<span ng-if="!header.user.name">{{header.user.email}}</span>
+					</a>
+				</li>
 			</ul>
 		</div>
 	</div>
+	<zf-panel id="userMenu" position="right" class="login-panel">
+		<a zf-close="" class="close-button">×<span class="sr-only">Close</span></a>
+		<!-- Don't judge -->
+		<br>
+		<br>
+		<div class="block-list">
+			<ul>
+				<li class="with-chevron"><a href="" ui-sref="account">My Profile</a></li>
+				<li class="with-chevron"><a href="" ui-sref="account">Dashboard/Settings</a></li>
+				<li class="with-chevron"><a href="" ng-click="header.logout()">Logout</a></li>
+			</ul>
+		</div>
+	</zf-panel>
 	<zf-panel id="login" position="right" class="login-panel">
 		<a zf-close="" class="close-button">×<span class="sr-only">Close</span></a>
 		<section ng-controller="LoginController as login">

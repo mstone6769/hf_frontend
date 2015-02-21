@@ -13,13 +13,31 @@
   border: 0;  
 }
 
+.logo {
+  width: 200px;
+  height: auto;
+  padding: 1.5rem 0;
+}
+
+.rotator {
+  margin: 0;
+  min-height: 480px;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 #header {
   background: white;
   box-shadow: 0 0 5px rgba(black, .2);
 }
 
 .card-project {
+<<<<<<< HEAD
   @include card-container( $background: white, $color: #303134, $padding: 1rem 0 0 0 );
+=======
+  @extend %card-background !optional;
+>>>>>>> mstone6769-master
 }
 
 .card-project_title {
@@ -62,6 +80,10 @@
     @extend h4;
   }
   box-shadow: 0 4px 2px -2px rgba(#000, 0.2);
+}
+
+.user-nav-item {
+  border-left: 1px solid #ccc;
 }
 
 .login-panel {
