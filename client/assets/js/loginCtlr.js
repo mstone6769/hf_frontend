@@ -125,6 +125,7 @@
 	}]);
 	app.controller('AccountController', ['accountService', 'FoundationApi', function(accountService, FoundationApi){
 		var account = this;
+		FoundationApi.publish('userMenu', 'close');
 		account.user = accountService.getCurrentUser();
 		account.updateAccount = function(user) {
 			accountService.updateUser(user).then(function(accountResponse) {
