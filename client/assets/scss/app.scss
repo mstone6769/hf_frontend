@@ -33,7 +33,7 @@
 }
 
 .card-project {
-  @extend %card-background !optional;
+  @include card-container( $background: white, $color: #303134, $padding: 1rem 0 0 0 );
 }
 
 .card-project_title {
@@ -57,7 +57,7 @@
   @extend .no-bullet;
   padding-top: 2rem;
   > li {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -71,10 +71,15 @@
   background: white;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
   p {
     @extend h4;
   }
+  box-shadow: 0 4px 2px -2px rgba(#000, 0.2);
+}
+
+.user-nav-item {
+  border-left: 1px solid #ccc;
 }
 
 .user-nav-item {
