@@ -7,7 +7,7 @@
 		var getCampaigns = function () {
 			return $http({
 					method: 'GET',
-					url: apiURL + '/crowdreview',
+					url: apiURL + '/crowdreview#crowdreview_list',
 					headers:  {
 						'Accept': 'application/json;odata=verbose'
 					}
@@ -30,7 +30,7 @@
 		
 		var campaignCtlr = this;
 
-		campaignCtlr.campaigns = campaignService.getCampaigns();
+		campaignService.getCampaigns().then(function (response) {campaignCtlr.campaigns=response;})
 
 	}]);
 
