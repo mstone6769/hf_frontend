@@ -6082,6 +6082,19 @@ blockquote p {
   background: white;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
 
+.card-project {
+  border: 1px solid #ededed;
+  margin-bottom: 0.5rem;
+  background: white;
+  color: #303134;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  overflow: hidden; }
+  .card-project h1, .card-project h2, .card-project h3, .card-project h4, .card-project .call-to-action p, .call-to-action .card-project p, .card-project h5, .card-project .card-project_title, .card-project h6, .card-project .card-project_author {
+    color: inherit; }
+  .card-project ul {
+    margin-bottom: 0; }
+
 @media only screen and (min-width: 40em) {
   .card-project_image {
     max-width: 240px; } }
@@ -6092,7 +6105,7 @@ blockquote p {
 .project-list {
   padding-top: 2rem; }
   .project-list > li {
-    margin-bottom: 2rem; }
+    margin-bottom: 1rem; }
 
 .circle-button {
   border-radius: 1000px;
@@ -6103,7 +6116,11 @@ blockquote p {
   background: white;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  margin-bottom: 1rem; }
+  margin-bottom: 0rem;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2); }
+
+.user-nav-item {
+  border-left: 1px solid #ccc; }
 
 .user-nav-item {
   border-left: 1px solid #ccc; }
