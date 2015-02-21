@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 	var app = angular.module('application');
-	app.factory('accountService', ['apiURL','$http', '$localStorage', '$state', '$rootScope', function accountFactory(apiURL, $http, $localStorage, $state, $rootScope){
+	app.factory('accountService', ['apiURL','$http', '$localStorage', '$state', '$rootScope', 'FoundationApi', function accountFactory(apiURL, $http, $localStorage, $state, $rootScope, FoundationApi){
 		var userAPI = apiURL + '/users';
 
 		var userLogin = function (user) {
@@ -19,6 +19,24 @@
 							$rootScope.$broadcast('user-loggedin');
 							$state.go('account');
 						}
+						return response.data;
+					},
+					function(error) {
+						console.log(error);
+					});
+		};
+		var updateUser = function (user) {
+			return $http({
+					method: 'PUT',
+					url: apiURL + '/hfusers/' + user.id,
+					headers:  {
+						'Accept': 'application/json;odata=verbose'
+					},
+					params: {'user[email]': user.email, 'user[password]': user.password, 'user[name]': user.name, 'user[avatar]': user.avatar, 'user_email': user.email, 'user_token': user.authentication_token}
+				}).then(
+					function(response) {
+						$localStorage.user = response.data;
+						FoundationApi.publish('main-notifications', { content: 'Your account has been updated' });
 						return response.data;
 					},
 					function(error) {
@@ -59,6 +77,7 @@
 		return {
 			userLogin: userLogin,
 			createUser: createUser,
+			updateUser: updateUser,
 			getCurrentUser: getCurrentUser,
 			logoutUser: logoutUser
 		};
@@ -107,5 +126,10 @@
 	app.controller('AccountController', ['accountService', 'FoundationApi', function(accountService, FoundationApi){
 		var account = this;
 		account.user = accountService.getCurrentUser();
+		account.updateAccount = function(user) {
+			accountService.updateUser(user).then(function(accountResponse) {
+				account.response = accountResponse;
+			});
+		};
 	}]);
 })();

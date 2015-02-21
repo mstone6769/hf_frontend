@@ -11,7 +11,10 @@
 				<li><a href="#">How it Works</a></li>
 				<li ng-hide="header.userLoggedIn"><a href="" zf-toggle="login">Login</a></li>
 				<li ng-show="header.userLoggedIn">
-					<a href="" zf-toggle="userMenu">{{header.user.email}}</a>
+					<a href="" zf-toggle="userMenu">
+						<span ng-if="header.user.name">{{header.user.name}}</span>
+						<span ng-if="!header.user.name">{{header.user.email}}</span>
+					</a>
 				</li>
 			</ul>
 		</div>
@@ -24,8 +27,7 @@
 		<div class="block-list">
 			<ul>
 				<li class="with-chevron"><a href="" ui-sref="account">My Profile</a></li>
-				<li class="with-chevron"><a href="" ui-sref="account">Settings</a></li>
-				<li class="with-chevron"><a href="" ui-sref="account">Dashboard</a></li>
+				<li class="with-chevron"><a href="" ui-sref="account">Dashboard/Settings</a></li>
 				<li class="with-chevron"><a href="" ng-click="header.logout()">Logout</a></li>
 			</ul>
 		</div>
