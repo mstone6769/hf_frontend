@@ -33,11 +33,7 @@
 }
 
 .card-project {
-<<<<<<< HEAD
   @include card-container( $background: white, $color: #303134, $padding: 1rem 0 0 0 );
-=======
-  @extend %card-background !optional;
->>>>>>> mstone6769-master
 }
 
 .card-project_title {
