@@ -2,9 +2,9 @@
 	'use strict';
 	var app = angular.module('application');
 	app.factory('campaignService', ['$http', function campaignFactory($http){
-		var apiURL = 'http://hfi2.herokuapp.com/';
+		var apiURL = 'http://hfi2.herokuapp.com';
 
-		var getAllCampaigns = function () {
+		var getCampaigns = function () {
 			return $http({
 					method: 'GET',
 					url: apiURL + '/crowdreview',
@@ -22,26 +22,16 @@
 		};
 
 		return {
-			userLogin: userLogin,
-			createUser: createUser
+			getCampaigns: getCampaigns
 		};
 	}]);
-	app.controller('LoginController', ['accountService', function(accountService){
-		var login = this;
-		login.logMeIn = function(user) {
-			console.log(user.email, user.password);
-			accountService.userLogin(user).then(function(accountResponse) {
-				login.response = accountResponse;
-			});
-		};
+
+	app.controller('campaignController', ['campaignService', function(campaignService){
+		
+		var campaignCtlr = this;
+
+		campaignCtlr.campaigns = campaignService.getCampaigns();
 
 	}]);
-	app.controller('SignupController', ['accountService', function(accountService){
-		var signup = this;
-		signup.createAccount = function(user) {
-			accountService.createUser(user).then(function(accountResponse) {
-				signup.response = accountResponse;
-			});
-		};
-	}]);
+
 })();
