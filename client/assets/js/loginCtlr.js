@@ -14,7 +14,6 @@
 					params: {'user[email]': user.email, 'user[password]': user.password}
 				}).then(
 					function(response) {
-						console.log(response);
 						if (response.data.success) {
 							$localStorage.user = response.data.user;
 							$rootScope.$broadcast('user-loggedin');
@@ -36,7 +35,6 @@
 					params: { 'user[email]': user.email, 'user[password]': user.password, 'user[name]': user.name }
 				}).then(
 					function(response) {
-						console.log(response);
 						return response.data;
 					},
 					function(error) {
