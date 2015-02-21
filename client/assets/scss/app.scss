@@ -18,6 +18,10 @@
   box-shadow: 0 0 5px rgba(black, .2);
 }
 
+.card-project {
+  @extend $card-background;
+}
+
 .card-project_title {
   @extend h5;
 }
