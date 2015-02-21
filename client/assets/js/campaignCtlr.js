@@ -7,7 +7,7 @@
 		var getCampaigns = function () {
 			return $http({
 					method: 'GET',
-					url: apiURL + '/crowdreview',
+					url: apiURL + '/crowdreview#crowdreview_list',
 					headers:  {
 						'Accept': 'application/json;odata=verbose'
 					}
